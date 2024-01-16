@@ -13,11 +13,16 @@ export const ContactForm = () => {
     const newName = form.elements.name.value;
     const newNumber = form.elements.number.value;
 
-    if (contacts.filter(contact => contact.name.includes(newName)).length) {
+    const isNameAlreadyExists = contacts.filter(contact =>
+      contact.name.includes(newName)
+    ).length;
+    const isNumberAlreadyExists = contacts.filter(contact =>
+      contact.number.includes(newNumber)
+    ).length;
+
+    if (isNameAlreadyExists) {
       alert(`${newName} is already in your contact list.`);
-    } else if (
-      contacts.filter(contact => contact.number.includes(newNumber)).length
-    ) {
+    } else if (isNumberAlreadyExists) {
       alert(`${newName} cannot have the same number as your other contact.`);
     } else if (newName !== '' || newNumber !== '') {
       dispatch(addContact(newName, newNumber));
