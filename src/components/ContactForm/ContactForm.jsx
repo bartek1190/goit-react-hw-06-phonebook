@@ -30,26 +30,30 @@ export const ContactForm = () => {
     }
   };
 
+  const generateUniqueId = () => uuidv4();
+  const nameInputId = generateUniqueId();
+  const numberInputId = generateUniqueId();
+
   return (
     <form className={css.contactForm} onSubmit={handleSubmit}>
-      <label htmlFor={uuidv4()}>Name</label>
+      <label htmlFor={nameInputId}>Name</label>
       <input
         className={css.contactForm__input}
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+([ -'][a-zA-Zа-яА-Я]+)*$"
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        id={uuidv4()}
+        id={nameInputId}
         required
       />
-      <label htmlFor={uuidv4()}>Number </label>
+      <label htmlFor={numberInputId}>Number </label>
       <input
         className={css.contactForm__input}
         type="tel"
         name="number"
         pattern="^[+]?[0-9 \u0028\u0029\u002D]*$"
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-        id={uuidv4()}
+        id={numberInputId}
         required
       />
 
